@@ -6,14 +6,20 @@ public class PlayerShooting : MonoBehaviour {
 	public ParticleSystem muzzleFlash;
 	Animator animator;
 	public ParticleSystem impactFlash;
+	public AudioClip gunshot;
+
+	private AudioSource audioSource;
 
 	void Start () {
+		audioSource = GetComponent<AudioSource> ();
 		animator = GetComponentInChildren<Animator> ();
 	}
 	
 	void Update () {
 		if (Input.GetButtonDown ("Fire1")) {
 			muzzleFlash.Play ();
+			audioSource.clip = gunshot;
+			audioSource.Play ();
 			animator.SetTrigger ("firingTrigger");
 			RaycastHit hit;
 

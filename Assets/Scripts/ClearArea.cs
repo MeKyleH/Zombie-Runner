@@ -10,7 +10,7 @@ public class ClearArea : MonoBehaviour {
 	void Update () {
 		timeSinceLastTrigger += Time.deltaTime;
 
-		if (timeSinceLastTrigger > 2f && Time.realtimeSinceStartup > 10f && !foundClearArea) {
+		if (timeSinceLastTrigger > 2f && Time.realtimeSinceStartup > 30f && !foundClearArea) {
 			//finds method called OnFindClearArea in any ancestors
 			foundClearArea = true;
 			SendMessageUpwards ("OnFindClearArea");
