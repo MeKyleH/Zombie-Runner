@@ -21,9 +21,9 @@ public class PlayerShooting : MonoBehaviour {
 			audioSource.clip = gunshot;
 			audioSource.Play ();
 			animator.SetTrigger ("firingTrigger");
+
+			// shooting
 			RaycastHit hit;
-
-
 			if (Physics.Raycast (transform.position, transform.forward, out hit, 50f)) {
 				
 				if (hit.transform.tag == "Enemy") {

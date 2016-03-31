@@ -14,6 +14,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Start()
         {
+			target = GameObject.FindGameObjectWithTag ("Player").transform;
+			if (!target) {
+				Debug.Log ("Take the player with the Player tag");
+			}
             // get the components on the object we need ( should not be null due to require component so no need to check )
             agent = GetComponentInChildren<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
