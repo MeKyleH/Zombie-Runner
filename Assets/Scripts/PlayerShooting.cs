@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour {
 	Animator animator;
 	public ParticleSystem impactFlash;
 	public AudioClip gunshot;
+	public int power;
 
 	private AmmoDisplay ammoDisplay;
 	private AudioSource audioSource;
@@ -33,7 +34,9 @@ public class PlayerShooting : MonoBehaviour {
 		if (Physics.Raycast (transform.position, transform.forward, out hit, 50f)) {
 			
 			if (hit.transform.tag == "Enemy") {
-				Destroy (hit.transform.gameObject);
+				Health enemyHealth = hit.transform.gameObject.GetComponent<Health> ();
+				Debug.Log ("Dealing " + power + " damage to " + hit.transform.name+ " who has " +enemyHealth.maxHealth+ " health");
+				enemyHealth.DealDamage(power);
 			}
 			impactFlash.transform.position = hit.point;
 			impactFlash.Play ();
