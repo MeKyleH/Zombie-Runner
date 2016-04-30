@@ -35,7 +35,6 @@ public class PlayerShooting : MonoBehaviour {
 			
 			if (hit.transform.tag == "Enemy") {
 				Health enemyHealth = hit.transform.gameObject.GetComponent<Health> ();
-				Debug.Log ("Dealing " + power + " damage to " + hit.transform.name+ " who has " +enemyHealth.maxHealth+ " health");
 				enemyHealth.DealDamage(power);
 			}
 			impactFlash.transform.position = hit.point;

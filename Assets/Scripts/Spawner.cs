@@ -24,10 +24,7 @@ public class Spawner : MonoBehaviour {
 		//gives a five second lag of spawn time
 		if (justSpawned && Time.timeSinceLevelLoad - lastSpawnTime >= 5) {
 			justSpawned = false;
-		} else if (IsPlayerInRange()){
-			Debug.Log ((Time.timeSinceLevelLoad - lastSpawnTime) + " seconds since last spawn");
 		}
-
 
 		if (IsPlayerInRange() && !justSpawned && spawnCount < 5) {
 			foreach (GameObject thisZombie in zombiePrefabArray) {
@@ -54,7 +51,6 @@ public class Spawner : MonoBehaviour {
 		GameObject newZombie = Instantiate (myGameObject) as GameObject;
 		newZombie.transform.parent = transform;
 		newZombie.transform.position = transform.position;
-		Debug.Log ("zombie spawn position " + newZombie.transform.position + " spawner position " + transform.position);
 		newZombie.GetComponent <NavMeshAgent>().enabled = true;
 	}
 }

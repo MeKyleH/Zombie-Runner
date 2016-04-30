@@ -32,7 +32,6 @@ public class Zombie : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider collider) {
 		if (collider.tag == "Player" && !attacking) {
-			Debug.Log (collider.transform.name);
 			AttackPlayer (collider);
 		}
 	}
@@ -45,11 +44,9 @@ public class Zombie : MonoBehaviour {
 
 	void AttackPlayer (Collider collider)
 	{
-		print ("attacking");
 		attacking = true;
 		Health playerHealth = collider.transform.GetComponent<Health> ();
 		if (playerHealth) {
-			Debug.Log ("Found Player!");
 			playerHealth.DealDamage (power);
 		}
 		animator.SetTrigger ("isAttacking");

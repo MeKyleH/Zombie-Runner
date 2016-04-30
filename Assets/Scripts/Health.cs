@@ -4,10 +4,12 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
 	public int maxHealth = 100;
+	public LevelManager levelManager;
 
 	public int health;
 	private HealthDisplay healthDisplay;
 	private bool isPlayer = false;
+
 
 	void Start() {
 		health = maxHealth;
@@ -28,8 +30,9 @@ public class Health : MonoBehaviour {
 
 	public void DealDamage(int amount) {
 		health -= amount;
-		Debug.Log (name + " has " + health + " health and is being damaged by " + amount);
-		if (health <= 0) {
+		if (health <= 0 && gameObject.tag == "Player") {
+			levelManager.LoadLevel ("01a Start");
+		} else if (health <= 0) {
 			Destroy(gameObject);
 		}
 		UpdatePlayerHealthDisplay ();
