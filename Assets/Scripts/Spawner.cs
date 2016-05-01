@@ -5,7 +5,9 @@ public class Spawner : MonoBehaviour {
 
 	public GameObject[] zombiePrefabArray = new GameObject[1];
 	public float maxPlayerDistance, minPlayerDistance;
-	public float playerDistance;
+	public int maxSpawn = 2;
+	public float playerDistance; //TODO make private
+
 
 	private bool justSpawned = false;
 	private float lastSpawnTime;
@@ -26,7 +28,7 @@ public class Spawner : MonoBehaviour {
 			justSpawned = false;
 		}
 
-		if (IsPlayerInRange() && !justSpawned && spawnCount < 5) {
+		if (IsPlayerInRange() && !justSpawned && spawnCount < maxSpawn) {
 			foreach (GameObject thisZombie in zombiePrefabArray) {
 				spawnCount++;
 				justSpawned = true;
@@ -35,7 +37,7 @@ public class Spawner : MonoBehaviour {
 			}
 		}
 
-		if (spawnCount >= 5 && transform.childCount == 0) {
+		if (spawnCount >= maxSpawn && transform.childCount == 0) {
 			Destroy (gameObject);
 		}
 	}
