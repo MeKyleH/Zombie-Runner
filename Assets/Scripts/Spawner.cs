@@ -16,13 +16,13 @@ public class Spawner : MonoBehaviour {
 	void Start() {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		if (!player) {
-			Debug.Log ("Did not find Player at start");
+			Debug.Log (name+ " did not find Player at start");
 		}
 	}
 
 	void Update () {
-		//gives a five second lag of spawn time
-		if (justSpawned && Time.timeSinceLevelLoad - lastSpawnTime >= 5) {
+		//spawns one per second to simulate a hoard
+		if (justSpawned && Time.timeSinceLevelLoad - lastSpawnTime >= 1) {
 			justSpawned = false;
 		}
 

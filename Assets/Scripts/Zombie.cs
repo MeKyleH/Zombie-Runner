@@ -11,7 +11,7 @@ public class Zombie : MonoBehaviour {
 	private Animator animator;
 	private NavMeshAgent navMeshAgent;
 	private bool attacking = false;
-	public float playerDistance;
+	private float playerDistance;
 
 	void Start () {
 		navMeshAgent = GetComponent<NavMeshAgent> ();
